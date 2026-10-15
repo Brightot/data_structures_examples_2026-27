@@ -7,7 +7,38 @@ import static org.junit.jupiter.api.Assertions.*;
 class DynamicArrayTest {
 
     @Test
-    void get() {
+    void size_PopulatedList() {
+        DynamicArray myList = new DynamicArray();
+        myList.add(5);
+        int expectedResult = 1;
+        int result = myList.size();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void size_EmptyList() {
+        DynamicArray myList = new DynamicArray();
+        int expectedResult = 0;
+        int result = myList.size();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void size_PopulatedList_MultipleElements() {
+        DynamicArray myList = new DynamicArray();
+        myList.add(5);
+        myList.add(10);
+        myList.add(3);
+        int expectedResult = 3;
+        int result = myList.size();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void get_PopulatedList() {
         DynamicArray myList = new DynamicArray();
         myList.add(5);
         int expectedResult = 5;
