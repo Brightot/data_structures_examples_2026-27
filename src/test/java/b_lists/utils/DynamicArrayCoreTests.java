@@ -12,7 +12,7 @@ public class DynamicArrayCoreTests {
     @Test
     void size_PopulatedList() {
         DynamicArray myList = new DynamicArray();
-        myList.add(5);
+        myList.add("Five");
         int expectedResult = 1;
         int result = myList.size();
 
@@ -31,9 +31,10 @@ public class DynamicArrayCoreTests {
     @Test
     void size_PopulatedList_MultipleElements() {
         DynamicArray myList = new DynamicArray();
-        myList.add(5);
-        myList.add(10);
-        myList.add(3);
+        myList.add("Five");
+        myList.add("Ten");
+        myList.add("Three");
+
         int expectedResult = 3;
         int result = myList.size();
 
@@ -43,9 +44,9 @@ public class DynamicArrayCoreTests {
     @Test
     void get_PopulatedList() {
         DynamicArray myList = new DynamicArray();
-        myList.add(5);
-        int expectedResult = 5;
-        int result = myList.get(0);
+        myList.add("Five");
+        String expectedResult = "Five";
+        String result = myList.get(0);
 
         assertEquals(expectedResult, result);
     }
@@ -53,7 +54,7 @@ public class DynamicArrayCoreTests {
     @Test
     void get_AccessBeforeList() {
         DynamicArray myList = new DynamicArray();
-        myList.add(5);
+        myList.add("Five");
 
         assertThrows(IndexOutOfBoundsException.class,
                 () -> {
@@ -65,7 +66,7 @@ public class DynamicArrayCoreTests {
     @Test
     void get_AccessBeyondEndOfList() {
         DynamicArray myList = new DynamicArray();
-        myList.add(5);
+        myList.add("Five");
 
         assertThrows(IndexOutOfBoundsException.class,
                 () -> {
@@ -77,7 +78,7 @@ public class DynamicArrayCoreTests {
     @Test
     void get_AccessAfterEndOfList() {
         DynamicArray myList = new DynamicArray();
-        myList.add(5);
+        myList.add("Five");
 
         assertThrows(IndexOutOfBoundsException.class,
                 () -> {
@@ -90,7 +91,7 @@ public class DynamicArrayCoreTests {
     @Test
     void add_EmptyList() {
         DynamicArray myList = new DynamicArray();
-        int value = 5;
+        String value = "Five";
         myList.add(value);
 
         // Confirm size changed
@@ -99,16 +100,16 @@ public class DynamicArrayCoreTests {
         assertEquals(expectedResult, result);
 
         // Confirm contents updated correctly
-        int expectedValue = value;
-        result = myList.get(0);
-        assertEquals(expectedValue, result);
+        String expectedValue = "Five";
+        String resultValue = myList.get(0);
+        assertEquals(expectedValue, resultValue);
     }
 
     @Test
     void add_PopulatedList() {
         DynamicArray myList = new DynamicArray();
         // Populate list before test begins:
-        int[] dataset = {1, 2, 3, 4};
+        String[] dataset = {"1", "2", "3", "4"};
         for (int i = 0; i < dataset.length; i++) {
             myList.add(dataset[i]);
         }
@@ -116,7 +117,7 @@ public class DynamicArrayCoreTests {
         int startSize = dataset.length;
 
         // Add element to end of populated list
-        int value = 5;
+        String value = "5";
         myList.add(value);
 
         // Confirm size changed
@@ -125,10 +126,10 @@ public class DynamicArrayCoreTests {
         assertEquals(expectedResult, result);
 
         // Confirm contents updated correctly
-        int expectedValue = value;
+        String expectedValue = value;
         // Retrieve from end position
-        result = myList.get(myList.size() - 1);
-        assertEquals(expectedValue, result);
+        String valueResult = myList.get(myList.size() - 1);
+        assertEquals(expectedValue, valueResult);
 
         // Confirm all other original values are still correct
         for (int i = 0; i < dataset.length; i++) {
@@ -140,7 +141,7 @@ public class DynamicArrayCoreTests {
     void add_PopulatedList_RequiresExpansion() {
         DynamicArray myList = new DynamicArray();
         // Populate list before test begins:
-        int[] dataset = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        String [] dataset = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         for (int i = 0; i < dataset.length; i++) {
             myList.add(dataset[i]);
         }
@@ -148,7 +149,7 @@ public class DynamicArrayCoreTests {
         int startSize = dataset.length;
 
         // Add element to end of populated list
-        int value = 5;
+        String value = "5";
         myList.add(value);
 
         // Confirm size changed
@@ -157,10 +158,10 @@ public class DynamicArrayCoreTests {
         assertEquals(expectedResult, result);
 
         // Confirm contents updated correctly
-        int expectedValue = value;
+        String expectedValue = value;
         // Retrieve from end position
-        result = myList.get(myList.size() - 1);
-        assertEquals(expectedValue, result);
+        String valueResult = myList.get(myList.size() - 1);
+        assertEquals(expectedValue, valueResult);
 
         // Confirm all other original values are still correct
         for (int i = 0; i < dataset.length; i++) {
