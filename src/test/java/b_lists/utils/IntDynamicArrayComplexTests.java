@@ -1,20 +1,15 @@
 package b_lists.utils;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DynamicArrayComplexTests {
+class IntDynamicArrayComplexTests {
     // join tests
     @Test
     void join_NullJoiningList(){
-        DynamicArray initialList = new DynamicArray();
-        DynamicArray joinerList = null;
+        IntDynamicArray initialList = new IntDynamicArray();
+        IntDynamicArray joinerList = null;
 
         assertThrows(IllegalArgumentException.class,
                 () -> {
@@ -30,8 +25,8 @@ class DynamicArrayComplexTests {
 
     @Test
     void join_EmptyListToEmptyList(){
-        DynamicArray initialList = new DynamicArray();
-        DynamicArray joinerList = new DynamicArray();
+        IntDynamicArray initialList = new IntDynamicArray();
+        IntDynamicArray joinerList = new IntDynamicArray();
 
         initialList.join(joinerList);
         int expectedSize = 0;
@@ -42,7 +37,7 @@ class DynamicArrayComplexTests {
 
     @Test
     void join_EmptyListToPopulatedList(){
-        DynamicArray initialList = new DynamicArray();
+        IntDynamicArray initialList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -51,7 +46,7 @@ class DynamicArrayComplexTests {
 
         int startSize = dataset.length;
 
-        DynamicArray joinerList = new DynamicArray();
+        IntDynamicArray joinerList = new IntDynamicArray();
         initialList.join(joinerList);
 
         // Check Size
@@ -70,7 +65,7 @@ class DynamicArrayComplexTests {
 
     @Test
     void join_PopulatedListToPopulatedList_InsufficientSpace(){
-        DynamicArray initialList = new DynamicArray();
+        IntDynamicArray initialList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         for (int i = 0; i < dataset.length; i++) {
@@ -79,7 +74,7 @@ class DynamicArrayComplexTests {
 
         int startSize = dataset.length;
 
-        DynamicArray joinerList = new DynamicArray();
+        IntDynamicArray joinerList = new IntDynamicArray();
         // Populate joiner list before test begins:
         int[] joinerDataset = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 12, 13, 14, 15};
         for (int i = 0; i < joinerDataset.length; i++) {
@@ -124,7 +119,7 @@ class DynamicArrayComplexTests {
 
     @Test
     void join_PopulatedListToPopulatedList_SufficientExistingSpace(){
-        DynamicArray initialList = new DynamicArray();
+        IntDynamicArray initialList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4, 5};
         for (int i = 0; i < dataset.length; i++) {
@@ -133,7 +128,7 @@ class DynamicArrayComplexTests {
 
         int startSize = dataset.length;
 
-        DynamicArray joinerList = new DynamicArray();
+        IntDynamicArray joinerList = new IntDynamicArray();
         // Populate joiner list before test begins:
         int[] joinerDataset = {10, 20, 30, 40};
         for (int i = 0; i < joinerDataset.length; i++) {
@@ -178,10 +173,10 @@ class DynamicArrayComplexTests {
 
     @Test
     void join_PopulatedListToEmptyList(){
-        DynamicArray initialList = new DynamicArray();
+        IntDynamicArray initialList = new IntDynamicArray();
         int startSize = 0;
 
-        DynamicArray joinerList = new DynamicArray();
+        IntDynamicArray joinerList = new IntDynamicArray();
         // Populate joiner list before test begins:
         int[] joinerDataset = {1, 2, 3, 4, 5};
         for (int i = 0; i < joinerDataset.length; i++) {
@@ -220,7 +215,7 @@ class DynamicArrayComplexTests {
     // Clear tests
     @Test
     void clear_EmptyList(){
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         int expectedSize = 0;
 
         myList.clear();
@@ -231,7 +226,7 @@ class DynamicArrayComplexTests {
 
     @Test
     void clear_PopulatedList(){
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         int[] dataset = {1, 2, 3, 4, 5};
         for (int i = 0; i < dataset.length; i++) {
             myList.add(dataset[i]);
@@ -249,4 +244,13 @@ class DynamicArrayComplexTests {
                 }, "Accessing old elements is still possible"
         );
     }
+
+    // Deduplication test cases:
+    // deduplicate_EmptyList_ReturnsEmptyList	[]	Returned list is empty; original remains empty; returned list is a     different instance.
+    // deduplicate_NoDuplicates_ReturnsSameValues	[1, 2, 3, 4]	Returned contents and size are correct; original    remains unchanged; result is a different instance.
+    // deduplicate_SingleElement_ReturnsSameElement	[7]	Returned list contains [7]; both sizes are correct; original    remains unchanged.
+    // deduplicate_AllElementsIdentical_ReturnsSingleElement	[5, 5, 5, 5]	Returned list contains [5]; size is 1;    original still contains four elements.
+    // deduplicate_OneDuplicate_ReturnsUniqueElements	[1, 2, 2, 3]	Returned list contains [1, 2, 3]; original is    unchanged.
+    // deduplicate_MultipleDuplicates_ReturnsUniqueElements	[1, 2, 1, 3, 2, 4, 3]	Returned list contains [1, 2, 3,     4]; original is unchanged.
+    // deduplicate_NegativeAndPositiveValues_ReturnsUniqueElements
 }

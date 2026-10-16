@@ -4,16 +4,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class DynamicArrayIntermediateTests {
+class IntDynamicArrayIntermediateTests {
     @Test
     void indexOf_EmptyList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         int expectedResult = -1;
         int target = 10;
@@ -24,7 +21,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void indexOf_NoMatchPresent() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         int value = 5;
         myList.add(value);
 
@@ -37,7 +34,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void indexOf_OneMatchPresent() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         int value = 5;
         myList.add(value);
 
@@ -49,7 +46,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void indexOf_OneMatchPresent_MiddleOfMultipleElementsInList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         myList.add(10);
         myList.add(20);
         int value = 5;
@@ -64,7 +61,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void indexOf_OneMatchPresent_EndOfMultipleElementsInList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         myList.add(10);
         myList.add(20);
         myList.add(30);
@@ -79,7 +76,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void indexOf_MultipleMatchesPresent() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         int value = 5;
         myList.add(value);
         myList.add(1);
@@ -95,7 +92,7 @@ class DynamicArrayIntermediateTests {
     // Add at position
     @Test
     void addAtPosition_EmptyList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         int index = 0;
         int value = 5;
 
@@ -115,7 +112,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void addAtIndex_PopulatedList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -158,7 +155,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void addAtIndex_StartOfPopulatedList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -201,7 +198,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void addAtIndex_IndexEqualsSizeMinusOne() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -244,7 +241,7 @@ class DynamicArrayIntermediateTests {
 
     @Test
     void addAtIndex_IndexEqualsSize() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -288,7 +285,7 @@ class DynamicArrayIntermediateTests {
     // Adding before list begins
     @Test
     void addAtIndex_AddBeforeList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -321,7 +318,7 @@ class DynamicArrayIntermediateTests {
     // Adding beyond list end
     @Test
     void addAtIndex_AddIndexGreaterThanSize() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -355,7 +352,7 @@ class DynamicArrayIntermediateTests {
     // Set at position - empty
     @Test
     void set_EmptyList() {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         assertThrows(IndexOutOfBoundsException.class,
                 () -> {
@@ -376,7 +373,7 @@ class DynamicArrayIntermediateTests {
     @ParameterizedTest
     @ValueSource(ints = {0, 2, 3})
     void set_StartMiddleEndOfPopulatedList(int index) {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {
@@ -422,7 +419,7 @@ class DynamicArrayIntermediateTests {
     @ParameterizedTest
     @ValueSource(ints = {-1, 4, 5})
     void set_SetNegative_EqualIndex_AfterEnd(int index) {
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
         // Populate list before test begins:
         int[] dataset = {1, 2, 3, 4};
         for (int i = 0; i < dataset.length; i++) {

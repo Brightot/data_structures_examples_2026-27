@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class DynamicArrayRemoveTests {
+class IntDynamicArrayRemoveTests {
     // Illegal actions
     // remove before list starts
     // remove from after list ends
@@ -18,7 +18,7 @@ class DynamicArrayRemoveTests {
     @ParameterizedTest
     @ValueSource(ints = {-1, 5, 6})
     void remove_IllegalPosition(int index){
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         int[] dataset = {1, 2, 3, 4, 5};
         for (int i = 0; i < dataset.length; i++) {
@@ -47,7 +47,7 @@ class DynamicArrayRemoveTests {
 
     @Test
     void remove_EmptyList(){
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         assertThrows(IndexOutOfBoundsException.class,
                 () -> {
@@ -63,7 +63,7 @@ class DynamicArrayRemoveTests {
     @ParameterizedTest
     @ValueSource(ints = {0, 2, 4})
     void remove_LegalPosition(int index){
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         int[] dataset = {1, 2, 3, 4, 5};
         for (int i = 0; i < dataset.length; i++) {
@@ -98,7 +98,7 @@ class DynamicArrayRemoveTests {
     @Test
     void remove_RepeatedRemovalFromLegalPosition(){
         int [] indices = {1, 3, 4};
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         List<Integer> values = new ArrayList<>();
         for(int i = 1; i <= 10; i++){
@@ -135,7 +135,7 @@ class DynamicArrayRemoveTests {
 
     @Test
     void remove_OnlyElement(){
-        DynamicArray myList = new DynamicArray();
+        IntDynamicArray myList = new IntDynamicArray();
 
         int value = 5;
         myList.add(value);
