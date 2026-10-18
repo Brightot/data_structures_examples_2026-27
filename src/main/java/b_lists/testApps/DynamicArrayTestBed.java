@@ -16,5 +16,21 @@ public class DynamicArrayTestBed {
         for (int i = 0; i < myList.size(); i++) {
             System.out.println(myList.get(i));
         }
+//
+//        int removed = myList.remove(3);
+//        System.out.println("Value removed: " + removed);
+//
+//        for (int i = 0; i < myList.size(); i++) {
+//            System.out.println(myList.get(i));
+//        }
+
+        System.out.println("----------------------------------");
+        System.out.println("Inserting " + 50 + " at position "+ 2);
+        myList.add(2, 50);
+
+        for (int i = 0; i < myList.size(); i++) {
+            System.out.println(myList.get(i));
+        }
     }
+
 }
